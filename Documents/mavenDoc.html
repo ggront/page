@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./documents.css">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <title>JDK, MVN, GIT</title>
+</head>
+<body>
+    <!--- Need to handle the overflow of text on the anchored header -->
+    <div class="navigation">
+        <span class="topHeader"><a href="../index.html">Home</a></span>
+        <span class="topHeader"><a href="../about.html">About</a></span>
+        <span class="topHeader"><a href="../documents.html">Documents</a></span>
+        <span class="topHeader"><a href="../contact.html">Contact</a></span>
+    </div>
+    <div class="content">
+        <h2 class="title">How to install Java Development Kit, Apache-Maven, and GIT on Mac OS X</h2>
+        <hr class="line">
+
+        <h3 class="documentSections">Purpose:</h3>
+        <p class="documentText">
+            The primary purpose of installing and configuring these softwares is to enable automated testing 
+            via the Selenium Safari WebDriver to run automated tests on the Safari web browser. Given that Safari is only available 
+            for Mac OS X and is a popular browser for users, automated testing will be necessary for scaling any departments automated
+            testing capabilities
+        </p>
+
+        <h3 class="documentSections">Approach:</h3>
+        <p class="DocumentText">
+            First you should check if your machine currently has any of the require softwares installed.
+            <li>To check the JDK version, run 'java --version' in your machines terminal.</li>
+            <li>To check the Maven version, run 'mvn -v' in your machines terminal.</li>
+            <li>To check the GIT version, run 'git --version' in your machines terminal.</li>
+        </p>
+        <p class="DocumentText">If an error was thrown for any of the required software, you will need 
+            to install the latest version of those softwares
+        </p>
+
+        <h3 class="documentSections">Download Links:</h3>
+        <li class="downloadLink"><a href="https://www.oracle.com/java/technologies/downloads/#jdk19-mac">Java Development Kit</a></li>
+        <li class="downloadLink"><a href="https://maven.apache.org/download.cgi">Maven-Apache</a></li>
+        <li class="downloadLink"><a href="https://git-scm.com/download/mac">Git</a></li>
+        <h3 class="documentSections">Environment Setup (Mac OS X):</h3>
+        <!--- Below is for JDK-->
+        <ul><h4>Installing JDK:</h4>
+            <ol>
+                <li class="referenceDoc">Install the x64 DMG Installer Java Developer Kit (JDK) from the download link above or <a href="https://www.oracle.com/java/technologies/downloads/#jdk19-mac">here</a>.</li>
+                <li>Open the DMG installer (this file should end in .dmg) by double clicking on the file.</li>
+                <li>Double click on the Package (this should end in .pkg) to start the installation process.</li>
+                <li>Click <b>Continue</b> then <b>Install</b>. You may have to enter your password to proceed. If you do not have sudo permissions, you will need to be granted access. Click <b>Install Software</b>.</li>
+                <li class="referenceDoc">If you open a Terminal session and type ‘java -version’ you should see the current version of java on your machine. For further help refer to Oracles' Documentation <a href="https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#JSJIG-GUID-C5F0BF25-3487-4F33-9275-7000C8E1C58C">here</a>.</li>
+                <li>If you type ‘echo $JAVA_HOME’ in Terminal, you should see the following response: 
+                    <ul>
+                        <br>"/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents/Home"<br>
+                    </ul>
+                    <ol>
+                        <br>
+                        <li>
+                            If this is not the response you receive, troubleshoot to find where your Java_Home directory is located and move it into the Contents directory located below:
+                        </li>
+                        <ol><br>
+                            <ui>
+                                "/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents"
+                            </ui>
+                        </ol><br>
+                    </ol>
+                </li>
+                <li>Open your bash profile by typing:
+                    <ul>
+                        <br>"vim ~./bash_profile"<br>
+                    </ul>
+                </li><br>
+                <li>Add the following text to the top (Make sure you save this change): 
+                    <ul>
+                        <br>"export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home"<br>
+                    </ul>
+                </li>
+            </ol>
+        </ul>
+        <!--- Above is for JDK-->
+
+        <!--- Below is for Maven-->
+        <ul><h4>Installing Maven:</h4>
+            <ol>
+                <li class="referenceDoc">Download the ‘Binary tar.gz archive’ Apache-Maven file from the download link above or <a href="https://maven.apache.org/download.cgi">here</a>.
+                    <ol><br>
+                        <li>
+                            In Terminal navigate to where you want the Apache-Maven directory to be created and type the following:
+                            <ul>
+                                <br>"unzip (entire file name)". An example of this is: "unzip apache-maven-3.8.7-bin.tar.gz"
+                            </ul>
+                        </li><br>
+                        <li>
+                            You may also double-click on the file after moving it to your desktop or in your Downloads folder.
+                        </li>
+                    </ol><br>
+                </li>
+                <li>You should now see the Apache-Maven directory. You can check this by typing:
+                    <ul>
+                        <br>"ls"<br><br>
+                        <li><b>NOTE:</b> Now, you should see a directory created called ‘apache-maven-(Version you downloaded)'.</li>
+                    </ul>
+                </li><br>
+                <li>Reopen your bash profile by typing the snippet below. Make sure you are in the in the same User directory as before.
+                    <ul>
+                        <br>"vim ~./bash_profile"<br>
+                    </ul><br>
+                </li>
+                <li>
+                    Now we need to add the bin directory of the created directory to the PATH environment variables. Add the following code 
+                    and make sure your bash profile matches (Make sure you save this change):
+                    <ul>
+                        <br>export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home<br>
+
+                        export MAVEN_HOME=/Users/(Your user)/(Version you downloaded)<br>
+                        export PATH=$PATH:$MAVEN_HOME/bin
+                    </ul><br>
+                </li>
+                <li>Close your current Terminal session and reopen a new Terminal session. </li>
+                <li>Type the following:
+                    <ul><br>"source .bash_profile"</ul>
+                </li><br>
+                <li>Now Apache-Maven should be installed and you can check the status of the service by typing:
+                    <ul><br>"mvn -v"</ul>
+                </li><br>
+            </ol>
+            <p>
+                <b>NOTE:</b> Upon closing your terminal session and reopening a new Terminal session, you will have to run ‘source .bash_profile’ 
+                every time to start Apache-Maven. If this is too much work, you may set a startup command in Terminal by following the steps below:
+                <ol>
+                    <li>Open Terminal</li>
+                    <li>Visit ‘Terminal’ > ‘Settings’ in the top menu bar.</li>
+                    <li>Select ‘Profiles’</li>
+                    <li>Select ‘Shell’</li>
+                    <li>Select the checkbox next to ‘Run command:' and type ‘source .bash_profile’ in the input field.</li>
+                    <li>Close and reopen Terminal.</li>
+                </ol>
+            </p>
+        </ul>
+        <ul><h4>Installing GIT:</h4></ul>
+        <br><br><br><br><br>
+    </div>
+    <footer><div class="footer">© ggront, 2023</div></footer>
+</body>
+</html>
