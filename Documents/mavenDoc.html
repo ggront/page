@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./documents.css">
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-    <title>JDK/MVN</title>
+    <title>JDK and MVN</title>
 </head>
 <body>
     <!--- Need to handle the overflow of text on the anchored header -->
@@ -16,6 +16,7 @@
         <span class="topHeader"><a href="../about.html">About</a></span>
         <span class="topHeader"><a href="../documents.html">Documents</a></span>
         <span class="topHeader"><a href="../contact.html">Contact</a></span>
+        <span class="topHeader"><a href="../calendar.html">Calendar</a></span>
     </div>
     <div class="content">
         <h2 class="title">How to install Java Development Kit and Apache-Maven on Mac OS X</h2>
@@ -52,10 +53,10 @@
                 <li>Open the DMG installer (this file should end in .dmg) by double clicking on the file.</li>
                 <li>Double click on the Package (this should end in .pkg) to start the installation process.</li>
                 <li>Click <b>Continue</b> then <b>Install</b>. You may have to enter your password to proceed. If you do not have sudo permissions, you will need to be granted access. Click <b>Install Software</b>.</li>
-                <li class="referenceDoc">If you open a Terminal session and type ‘java -version’ you should see the current version of java on your machine. For further help refer to Oracles' Documentation <a href="https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#JSJIG-GUID-C5F0BF25-3487-4F33-9275-7000C8E1C58C">here</a>.</li>
-                <li>If you type ‘echo $JAVA_HOME’ in Terminal, you should see the following response: 
+                <li class="referenceDoc">If you open a Terminal session and type <kbd class="code">java -version</kbd> you should see the current version of java on your machine. For further help refer to Oracles' Documentation <a href="https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#JSJIG-GUID-C5F0BF25-3487-4F33-9275-7000C8E1C58C">here</a>.</li>
+                <li>If you type <kbd class="code">echo $JAVA_HOME</kbd> in Terminal, you should see the following response: 
                     <ul>
-                        <br>"/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents/Home"<br>
+                        <br><kbd class="code">/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents/Home</kbd><br>
                     </ul>
                     <ol>
                         <br>
@@ -64,19 +65,19 @@
                         </li>
                         <ol><br>
                             <ui>
-                                "/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents"
+                                <kbd class="code">/Library/Java/JavaVirtualMachines/(jdk-version).jdk/Contents</kbd>
                             </ui>
                         </ol><br>
                     </ol>
                 </li>
                 <li>Open your bash profile by typing:
                     <ul>
-                        <br>"vim ~./bash_profile"<br>
+                        <br><kbd class="code">vim ~./bash_profile</kbd><br>
                     </ul>
                 </li><br>
                 <li>Add the following text to the top (Make sure you save this change): 
                     <ul>
-                        <br>"export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home"<br>
+                        <br><kbd class="code">export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home</kbd><br>
                     </ul>
                 </li>
             </ol>
@@ -91,7 +92,7 @@
                         <li>
                             In Terminal navigate to where you want the Apache-Maven directory to be created and type the following:
                             <ul>
-                                <br>"unzip (entire file name)". An example of this is: "unzip apache-maven-3.8.7-bin.tar.gz"
+                                <br><kbd class="code">unzip (entire file name)</kbd>. An example of this is: <kbd class="code">unzip apache-maven-3.8.7-bin.tar.gz</kbd>
                             </ul>
                         </li><br>
                         <li>
@@ -101,42 +102,42 @@
                 </li>
                 <li>You should now see the Apache-Maven directory. You can check this by typing:
                     <ul>
-                        <br>"ls"<br><br>
-                        <li><b>NOTE:</b> Now, you should see a directory created called ‘apache-maven-(Version you downloaded)'.</li>
+                        <br><kbd class="code">ls</kbd><br><br>
+                        <li><b>NOTE:</b> Now, you should see a directory created called <kbd class="code">apache-maven-(Version you downloaded)</kbd>.</li>
                     </ul>
                 </li><br>
                 <li>Reopen your bash profile by typing the snippet below. Make sure you are in the in the same User directory as before.
                     <ul>
-                        <br>"vim ~./bash_profile"<br>
+                        <br><kbd class="code">vim ~./bash_profile</kbd><br>
                     </ul><br>
                 </li>
                 <li>
                     Now we need to add the bin directory of the created directory to the PATH environment variables. Add the following code 
                     and make sure your bash profile matches (Make sure you save this change):
                     <ul>
-                        <br>export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home<br>
-
-                        export MAVEN_HOME=/Users/(Your user)/(Version you downloaded)<br>
-                        export PATH=$PATH:$MAVEN_HOME/bin
+                        <br>
+                        <kbd class="code">export JAVA_HOME=/Library/Java/JavaVirtualMachines/(The jdk file you downloaded)/Contents/Home</kbd><br>
+                        <kbd class="code">export MAVEN_HOME=/Users/(Your user)/(Version you downloaded)</kbd><br>
+                        <kbd class="code">export PATH=$PATH:$MAVEN_HOME/bin</kbd>
                     </ul><br>
                 </li>
                 <li>Close your current Terminal session and reopen a new Terminal session. </li>
                 <li>Type the following:
-                    <ul><br>"source .bash_profile"</ul>
+                    <ul><br><kbd class="code">source .bash_profile</kbd></ul>
                 </li><br>
                 <li>Now Apache-Maven should be installed and you can check the status of the service by typing:
-                    <ul><br>"mvn -v"</ul>
+                    <ul><br><kbd class="code">mvn -v</kbd></ul>
                 </li><br>
             </ol>
             <p>
-                <b>NOTE:</b> Upon closing your terminal session and reopening a new Terminal session, you will have to run ‘source .bash_profile’ 
+                <b>NOTE:</b> Upon closing your terminal session and reopening a new Terminal session, you will have to run <kbd class="code">source .bash_profile</kbd> 
                 every time to start Apache-Maven. If this is too much work, you may set a startup command in Terminal by following the steps below:
                 <ol>
                     <li>Open Terminal</li>
                     <li>Visit ‘Terminal’ > ‘Settings’ in the top menu bar.</li>
                     <li>Select ‘Profiles’</li>
                     <li>Select ‘Shell’</li>
-                    <li>Select the checkbox next to ‘Run command:' and type ‘source .bash_profile’ in the input field.</li>
+                    <li>Select the checkbox next to ‘Run command:' and type <kbd class="code">source .bash_profile</kbd> in the input field.</li>
                     <li>Close and reopen Terminal.</li>
                 </ol>
             </p>
